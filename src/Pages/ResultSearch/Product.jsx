@@ -45,6 +45,7 @@ function Product(props) {
                       <Link
                         to={`/chi-tiet/${val.slug}-i${val.id}`}
                         className="full-item"
+                        title={val.name}
                       ></Link>
                       <div className="grid-product-item__header">
                         <div className="item__header-img">

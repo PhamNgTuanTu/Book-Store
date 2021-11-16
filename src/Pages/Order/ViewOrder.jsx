@@ -16,7 +16,7 @@ import {
   Modal,
   ModalBody,
   Row,
-  Table,
+  Table
 } from "reactstrap";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
@@ -32,8 +32,9 @@ import {
   setDataOrderProfile,
   setLoadingOrder,
   setPageOder,
-  setStatusOder,
+  setStatusOder
 } from "../../store/order";
+import { login } from "../../store/user";
 import Breadcrumb from "./Breacump";
 
 ViewOrder.propTypes = {};
@@ -100,18 +101,36 @@ function ViewOrder(props) {
     }
   };
 
+
   const LoadData = async () => {
-    setLoading(true);
-    let response = null;
-    if (JSON.stringify(parsed) !== "{}") {
-      response = await orderAPI.getOrderPage(parsed.page);
-    } else {
-      response = await orderAPI.getOrder();
+    try {
+      setLoading(true);
+      let response = null;
+      if (JSON.stringify(parsed) !== "{}") {
+        response = await orderAPI.getOrderPage(parsed.page);
+      } else {
+        response = await orderAPI.getOrder();
+      }
+      dispatch(setDataOrderProfile(response.data));
+      dispatch(setPageOder(response.meta));
+      dispatch(setLoadingOrder(false));
+      setLoading(false);
+    } catch (error) {
+      if (error.response.status === 401) {
+        Swal.fire({
+          title: "Phiên đăng nhập đã hết hạn !",
+          text: "Vui lòng đăng nhập lại hệ thống",
+          showDenyButton: true,
+          showConfirmButton: false,
+          denyButtonText: `Đăng xuất`,
+        }).then((result) => {
+          if (result.isDenied) {
+            dispatch(login({}));
+            history.push("/");
+          }
+        });
+      }
     }
-    dispatch(setDataOrderProfile(response.data));
-    dispatch(setPageOder(response.meta));
-    dispatch(setLoadingOrder(false));
-    setLoading(false);
   };
 
   const totalPageCount = Math.ceil(totalPage / 10);

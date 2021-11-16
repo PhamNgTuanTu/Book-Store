@@ -83,7 +83,7 @@ function BookNewUpdate(props) {
                     Sách Mới Cập Nhật
                   </h4>
                   <div className="view-all" >
-                  <Link to="/tat-ca-sach" className="text-color">
+                  <Link to="/tat-ca-sach" className="text-color" title="xem tất cả sách">
                       Xem Tất Cả
                       <i className="fas fa-angle-double-right" />
                     </Link>
@@ -92,13 +92,10 @@ function BookNewUpdate(props) {
                     {data.map((product) => (
                       <div
                         key={product.id}
-                        // className="product big wow fadeInRightBig animated"
-                        // data-wow-duration="1s"
-                        // data-wow-delay=".3s"
                         className="product"
                       >
                         <Link
-                          to={`/chi-tiet/${product.slug}-i${product.id}`}
+                          to={`/chi-tiet/${product.slug}-i${product.id}`} title={product.name}
                           className="full-item"
                         >
                           {" "}

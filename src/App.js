@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 import homeApi from './Api/homeAPI';
 import PrivateRoute from './components/Custom/PrivateRoute';
+import PrivateRouteShipper from './components/Custom/PrivateRouteShipper';
 import ScrollToTop from './components/Custom/ScrollTop';
 import AllBooks from './Pages/AllBooks';
 import Author from './Pages/Author';
@@ -13,6 +14,8 @@ import Details from './Pages/Detail';
 import ErrorPage2 from './Pages/ErrorPage/ErrorPage2';
 import QuenMatKhau from './Pages/ForgetPass';
 import RecoverPass from './Pages/ForgetPass/RecoverPass';
+import GiaoHang from './Pages/GiaoHang';
+import ViewDetail from './Pages/GiaoHang/ViewDetail';
 import TrangChu from './Pages/Home';
 import GioiThieu from './Pages/Mota/GioiThieu';
 import Order from './Pages/Order';
@@ -76,6 +79,9 @@ function App() {
                             <PrivateRoute exact path="/trang-ca-nhan" component={Profile} />
                             <PrivateRoute exact path="/dat-hang" component={Order} />
                             <PrivateRoute exact path="/xem-don-hang" component={ViewOrder} />
+                            <Route exact path="/dang-nhap-giao-hang" component={GiaoHang} />
+                            <PrivateRouteShipper exact path="/dich-vu-giao-hang" component={ViewDetail} />
+
                             <Route path="*" component={ErrorPage2} />
                         </Switch>
                     </Router>

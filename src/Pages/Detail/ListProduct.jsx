@@ -15,7 +15,7 @@ function ListProduct(props) {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 5,
+      items: 4,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -44,6 +44,8 @@ function ListProduct(props) {
         </Row>
         <Row className="mt-2">
           <Col className="custom-border-carousel">
+            {
+              data ? 
             <Carousel responsive={responsive}
             infinite={true}
             autoPlaySpeed={4000}
@@ -69,7 +71,7 @@ function ListProduct(props) {
                                 height="160px"
                               />
                               {Number(val.discount > 0) ? (
-                                <span className="discount discount-grid">
+                                <span className="discount discount-grid discount-grid-details">
                                   -{val.discount}%
                                 </span>
                               ) : null}
@@ -124,7 +126,9 @@ function ListProduct(props) {
               ) : (
                 <div></div>
               )}
-            </Carousel>
+            </Carousel> : 
+            <h5 className="mt-3 mb-3">Không tìm thấy sách cùng thể loại !</h5>
+            }
           </Col>
         </Row>
       </div>

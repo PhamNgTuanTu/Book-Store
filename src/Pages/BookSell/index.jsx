@@ -118,20 +118,22 @@ function BookBestSelling(props) {
                     Sách Bán Chạy
                   </h4>
                   <div className="view-all">
-                    <Link to="/tat-ca-sach" className="text-color">
+                    <Link
+                      to="/tat-ca-sach"
+                      className="text-color"
+                      title="Xem tất cả sách"
+                    >
                       Xem Tất Cả
                       <i className="fas fa-angle-double-right" />
                     </Link>
                   </div>
                   <div className="main-book-product">
                     {data.map((product) => (
-                      <div
-                        key={product.id}
-                        className="product"
-                      >
+                      <div key={product.id} className="product">
                         <Link
                           to={`/chi-tiet/${product.slug}-i${product.id}`}
                           className="full-item"
+                          title={product.name}
                         >
                           {" "}
                         </Link>

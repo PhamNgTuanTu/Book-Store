@@ -8,7 +8,7 @@ function percentage(num, per) {
 }
 function ModalCart(props) {
   const { modal, setModal, data, setModalAlert, setMes, setActiveAlert } =
-  props;
+    props;
 
   const { addItem } = useCart();
   const toggle = () => {
@@ -54,7 +54,9 @@ function ModalCart(props) {
         toggle={toggle}
         centered={true}
         contentClassName={
-          data && Number(data.quantity) > 0 ? "cart-modal" : "cart-modal-warning"
+          data && Number(data.quantity) > 0
+            ? "cart-modal"
+            : "cart-modal-warning"
         }
       >
         <ModalBody className="p-0">
@@ -81,8 +83,13 @@ function ModalCart(props) {
                 className="mt-3 mb-3 d-flex align-items-center justify-content-between"
               >
                 <img
-                  style={{ height: "100px", width: "auto" }}
-                  src={`${process.env.REACT_APP_API_URL}/images/${data && data.image.front_cover}`}
+                  style={{
+                    height: "100px",
+                    width: "auto",
+                  }}
+                  src={`${process.env.REACT_APP_API_URL}/images/${
+                    data && data.image.front_cover
+                  }`}
                   alt={data && data.name}
                 />
                 <span className="pl-2">{data && data.name}</span>
@@ -92,10 +99,13 @@ function ModalCart(props) {
                 className="d-flex align-items-center justify-content-end"
               >
                 <div className="mr-3">
-                  <span>{`${1} x ${priceBooks(data && data).toLocaleString("it-IT", {
-                    style: "currency",
-                    currency: "VND",
-                  })}`}</span>
+                  <span>{`${1} x ${priceBooks(data && data).toLocaleString(
+                    "it-IT",
+                    {
+                      style: "currency",
+                      currency: "VND",
+                    }
+                  )}`}</span>
                 </div>
               </Col>
             </Row>
@@ -105,10 +115,13 @@ function ModalCart(props) {
                   <h5 className="mr-2">
                     Tổng tạm tính:{" "}
                     <strong>
-                      {Number(1 * priceBooks(data && data)).toLocaleString("it-IT", {
-                        style: "currency",
-                        currency: "VND",
-                      })}
+                      {Number(1 * priceBooks(data && data)).toLocaleString(
+                        "it-IT",
+                        {
+                          style: "currency",
+                          currency: "VND",
+                        }
+                      )}
                     </strong>
                   </h5>
                 </div>

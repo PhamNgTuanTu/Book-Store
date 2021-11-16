@@ -49,15 +49,33 @@ function Profile(props) {
     new_password_confirmation: "",
   };
 
+
   const LoadData = async () => {
-    const response = await userApi.getUser();
-    dispatch(setDataUser(response.data));
+    try {
+      const response = await userApi.getUser();
+      dispatch(setDataUser(response.data));
 
-    const responseOrder = await orderAPI.getOrder();
-    dispatch(setDataOrderProfile(responseOrder.data));
-    dispatch(setPageOder(responseOrder.meta));
+      const responseOrder = await orderAPI.getOrder();
+      dispatch(setDataOrderProfile(responseOrder.data));
+      dispatch(setPageOder(responseOrder.meta));
 
-    dispatch(setLoadingData(false));
+      dispatch(setLoadingData(false));
+    } catch (error) {
+      if (error.response.status === 401) {
+        Swal.fire({
+          title: "Phiên đăng nhập đã hết hạn !",
+          text: "Vui lòng đăng nhập lại hệ thống",
+          showDenyButton: true,
+          showConfirmButton: false,
+          denyButtonText: `Đăng xuất`,
+        }).then((result) => {
+          if (result.isDenied) {
+            dispatch(login({}));
+            history.push("/");
+          }
+        });
+      }
+    }
   };
   const [activeInput, setActiveInput] = useState(false);
   const [alert, setAlert] = useState(false);
@@ -283,7 +301,10 @@ function Profile(props) {
                           </a>
                         </li>
                         <li className="nav-item">
-                          <Link to="/xem-don-hang" className="nav-link text-color">
+                          <Link
+                            to="/xem-don-hang"
+                            className="nav-link text-color"
+                          >
                             Xem đơn hàng
                           </Link>
                         </li>

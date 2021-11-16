@@ -12,6 +12,7 @@ import allbooks from "./books";
 import address from "./address";
 import orders from "./order";
 import raiting from "./raiting";
+import shipper from "./ship";
 
 const reducer = combineReducers({
   home,
@@ -26,6 +27,7 @@ const reducer = combineReducers({
   address,
   orders,
   raiting,
+  shipper,
 });
 
 const store = configureStore({

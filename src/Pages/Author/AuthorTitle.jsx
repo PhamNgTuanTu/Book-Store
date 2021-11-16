@@ -29,10 +29,10 @@ function AuthorTitle(props) {
       ) : (
         <>
           {data ? (
-            <div className="book-update__content1 author-update mb-4">
+            <div className="book-update__content1 author-update mb-4 w-100">
               <div className="col-lg-3 col-md-3 col-sm-6 author-detail-img background-color h-100 d-flex align-items-center justify-content-center">
                 <img
-                  className="big wow fadeInUp animated width-maxcontent"
+                  className="big wow fadeInUp animated img-author-av"
                   data-wow-duration="1s"
                   data-wow-delay=".3s"
                   src={`${process.env.REACT_APP_API_URL}/images/${data.image}`}

@@ -102,7 +102,7 @@ function HighlightsAuthor(props) {
                     "
                                   >
                                     {data ? (
-                                      <Link to={`/a${data.id}/${data.slug}`}>
+                                      <Link to={`/a${data.id}/${data.slug}`} title={`Tác Giả ${data.name}`}>
                                         {data.name}
                                       </Link>
                                     ) : null}
@@ -112,6 +112,7 @@ function HighlightsAuthor(props) {
                                       <Link
                                         to={`/a${data.id}/${data.slug}`}
                                         className="view-author"
+                                        title="xem tiểu sử tác giả"
                                       >
                                         Xem Thêm
                                         <i className="fas fa-angle-double-right" />
@@ -152,6 +153,7 @@ function HighlightsAuthor(props) {
                                             <Link
                                               to={`/chi-tiet/${val.slug}-i${val.id}`}
                                               className="link-product-author"
+                                              title={val.name}
                                             >
                                               {val.name}
                                             </Link>

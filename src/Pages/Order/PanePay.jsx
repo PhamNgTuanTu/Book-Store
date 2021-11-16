@@ -9,7 +9,7 @@ import {
   CardHeader,
   Col,
   Collapse,
-  Row
+  Row,
 } from "reactstrap";
 import feeShipApi from "../../Api/feeShipAPi";
 import { setDV, setPhiShip } from "../../store/address";
@@ -40,11 +40,14 @@ function PanePay(props) {
   const loadDichVu = async () => {
     if (JSON.stringify(dataForm) !== "{}" && JSON.stringify(items) !== "[]") {
       try {
-        const response = await feeShipApi.getDichVu(process.env.REACT_APP_TOKEN_SHOP, {
-          shop_id: Number(process.env.REACT_APP_SHOP_ID),
-          from_district: Number(process.env.REACT_APP_DIA_CHI_ID),
-          to_district: dataForm.huyen,
-        });
+        const response = await feeShipApi.getDichVu(
+          process.env.REACT_APP_TOKEN_SHOP,
+          {
+            shop_id: Number(process.env.REACT_APP_SHOP_ID),
+            from_district: Number(process.env.REACT_APP_DIA_CHI_ID),
+            to_district: dataForm.huyen,
+          }
+        );
         dispatch(setDV(response.data));
       } catch (error) {}
     }
@@ -81,7 +84,10 @@ function PanePay(props) {
         weight: totalWeight(items),
         width: items[0].width,
       };
-      const response = await feeShipApi.feeDichVu(process.env.REACT_APP_TOKEN_SHOP, arr);
+      const response = await feeShipApi.feeDichVu(
+        process.env.REACT_APP_TOKEN_SHOP,
+        arr
+      );
       dispatch(setPhiShip(response.data.data.total));
     }
   };
@@ -99,7 +105,7 @@ function PanePay(props) {
       setData((preState) => ({
         ...preState,
         shipping_fee: feeShip,
-        total_payment: (feeShip + totalCost),
+        total_payment: feeShip + totalCost,
       }));
       setActiveTab(3);
       setLoadingPane(false);
@@ -227,12 +233,13 @@ function PanePay(props) {
                             <img
                               style={{
                                 height: "80px",
-                                width: "auto",
+                                maxWidth: "50px",
+                                objectFit: "cover",
                               }}
                               src={`${process.env.REACT_APP_API_URL}/images/${val.image}`}
                               alt={val.name}
                             />
-                            <div className="w-100">
+                            <div className="w-100 ml-2">
                               <Row>
                                 <Col className="ml-2">
                                   <span>{val.name}</span>

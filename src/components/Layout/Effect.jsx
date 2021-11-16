@@ -31,22 +31,6 @@ function Effect() {
   };
   /* --progressbar-- */
 
-  // giỏ hàng
-  window.addEventListener(
-    "scroll",
-    function () {
-      var shopping_cart = document.querySelector(".shopping-cart");
-      if (shopping_cart) {
-        shopping_cart.classList.toggle(
-          "active-scroll-shopping",
-          window.scrollY > 1
-        );
-      }
-    },
-    []
-  );
-  // --giỏ hàng--
-
   return (
     <>
       <div>

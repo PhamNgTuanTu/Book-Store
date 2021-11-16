@@ -83,7 +83,7 @@ function BookRanDom(props) {
                     Có Thể Bạn Thích
                   </h4>
                   <div className="view-all">
-                  <Link to="/tat-ca-sach" className="text-color">
+                  <Link to="/tat-ca-sach" className="text-color" title="xem tất cả sách">
                       Xem Tất Cả
                       <i className="fas fa-angle-double-right" />
                     </Link>
@@ -100,6 +100,7 @@ function BookRanDom(props) {
                         <Link
                           to={`/chi-tiet/${product.slug}-i${product.id}`}
                           className="full-item"
+                          title={product.name}
                         >
                           {" "}
                         </Link>

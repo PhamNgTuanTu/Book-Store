@@ -1061,6 +1061,9 @@
   .discount-grid {
     right: -7%;
   } 
+  .discount-grid-details {
+    right: 17% !important;
+  }
   .header .menu .menu-item .sub-menu {
     backdrop-filter:unset;
   }

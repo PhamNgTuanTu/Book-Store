@@ -102,9 +102,9 @@ function BookIsDisCount(props) {
                                 height="210px"
                                 width="auto"
                               />
-                              <div className="book-update__content-description pt-4">
+                              <div className="book-update__content-description pt-4 ml-3">
                                 <div className="book-update__content-title">
-                                  <Link to={`/chi-tiet/${val.slug}-i${val.id}`}>
+                                  <Link to={`/chi-tiet/${val.slug}-i${val.id}`} title={val.name}>
                                     {val.name}
                                   </Link>
                                   <h5>{val.author.name}</h5>

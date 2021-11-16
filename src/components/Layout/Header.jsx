@@ -151,9 +151,9 @@ function Header(props) {
 
   useEffect(() => {
     setModal(false);
-    return()=> {
+    return () => {
       setModal(false);
-    }
+    };
   }, [pathname]);
 
   return (
@@ -243,7 +243,7 @@ function Header(props) {
                   <div
                     className={
                       JSON.stringify(items) !== "[]" && items.length > 0
-                        ? "shopping-cart active-animation-cart"
+                        ? "shopping-cart active-animation-cart active-scroll-shopping"
                         : "shopping-cart"
                     }
                     id="focusCart"
@@ -280,7 +280,7 @@ function Header(props) {
                     <div className="header-login">
                       {/* đăng nhập */}
                       <div className="login-logout">
-                        {user ? (
+                        {user?.token ? (
                           <div className="ic-user-same">
                             <i
                               className="fas fa-user-circle box-icon-user"
@@ -298,7 +298,10 @@ function Header(props) {
                                   <Row>
                                     <Col>
                                       <div className="w-100 sub-li">
-                                        <Link to="/trang-ca-nhan" className="text-color">
+                                        <Link
+                                          to="/trang-ca-nhan"
+                                          className="text-color"
+                                        >
                                           <i
                                             className="fa fa-user-circle mr-2"
                                             aria-hidden="true"
@@ -311,7 +314,10 @@ function Header(props) {
                                   <Row>
                                     <Col>
                                       <div className="w-100 sub-li">
-                                        <Link to="/xem-don-hang" className="text-color">
+                                        <Link
+                                          to="/xem-don-hang"
+                                          className="text-color"
+                                        >
                                           <i className="far fa-list-alt mr-2"></i>
                                           Xem đơn hàng
                                         </Link>
@@ -321,7 +327,11 @@ function Header(props) {
                                   <Row>
                                     <Col>
                                       <div className="w-100 sub-li sub-li3">
-                                        <Link to="#" onClick={handleLogout} className="text-color">
+                                        <Link
+                                          to="#"
+                                          onClick={handleLogout}
+                                          className="text-color"
+                                        >
                                           <i
                                             className="fa fa-power-off mr-2"
                                             aria-hidden="true"
@@ -356,7 +366,7 @@ function Header(props) {
                     </div>
                   ) : (
                     <>
-                      {user ? (
+                      {user?.token ? (
                         <div className="header-login">
                           {/* đăng nhập */}
                           <div className="login-logout">
@@ -397,7 +407,7 @@ function Header(props) {
       <UncontrolledPopover
         placement="left"
         target="focusCart"
-        trigger="focus"
+        trigger="click"
         className="hide-cart-mobile"
       >
         <PopoverBody>
@@ -409,11 +419,15 @@ function Header(props) {
                     <Row className="row-cart-small position-relative m-0">
                       <Col
                         md="10"
-                        className="d-flex align-items-center justify-content-center pt-2 pb-2"
+                        className="d-flex align-items-center pt-2 pb-2 px-0"
                       >
                         <img
                           className="pl-2"
-                          style={{ height: "50px", width: "auto" }}
+                          style={{
+                            height: "50px",
+                            maxWidth: "40px",
+                            objectFit: "cover"
+                          }}
                           src={`${process.env.REACT_APP_API_URL}/images/${val.image}`}
                           alt={val.name}
                         />
