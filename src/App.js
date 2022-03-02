@@ -24,6 +24,28 @@ import Profile from './Pages/Profile';
 import ResultSearch from './Pages/ResultSearch';
 import { setDataTacGia, setDataTheLoai, setLoadingMenu } from './store/home';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAQbw8xRf_4PJqQGHI3HrSK6pRu3ouHvQM",
+  authDomain: "staciabook-sell.firebaseapp.com",
+  projectId: "staciabook-sell",
+  storageBucket: "staciabook-sell.appspot.com",
+  messagingSenderId: "1083115553384",
+  appId: "1:1083115553384:web:fdb5139d60aa46a2b6b1dd",
+  measurementId: "G-GLVFX1BK27"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 function App() {
     const dispatch = useDispatch();
     const { pathname } = useLocation();

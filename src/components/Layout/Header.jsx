@@ -407,7 +407,7 @@ function Header(props) {
       <UncontrolledPopover
         placement="left"
         target="focusCart"
-        trigger="click"
+        trigger="focus"
         className="hide-cart-mobile"
       >
         <PopoverBody>
